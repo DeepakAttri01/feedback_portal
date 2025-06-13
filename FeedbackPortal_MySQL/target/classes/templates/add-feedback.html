@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f8fa;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Submit Feedback</h2>
+    <form action="#" th:action="@{/save}" th:object="${feedback}" method="post">
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" />
+
+        <label>Course ID:</label>
+        <input type="text" th:field="*{courseId}" />
+
+        <label>Rating:</label>
+        <input type="number" min="0" max="5" th:field="*{rating}" />
+
+        <label>Comment:</label>
+        <textarea rows="4" th:field="*{comment}"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
